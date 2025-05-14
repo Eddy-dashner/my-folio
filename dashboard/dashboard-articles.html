@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="../assets/images/logo-color.svg"
+      type="image/x-icon"
+    />
+    <title>My Brand</title>
+  </head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <body>
+    <div class="dashboard-container">
+      <div class="error-container" id="error-container">
+        <span class="material-symbols-outlined" id="error-icon"> error </span>
+        <p id="error-text" class="error-text"></p>
+      </div>
+
+      <div class="success-container" id="success-container">
+        <span class="material-symbols-outlined" id="error-icon">
+          check_circle
+        </span>
+        <p id="success-text" class="success-text"></p>
+      </div>
+
+      <aside class="dashboard-sidebar">
+        <div class="dashboard-image-logo">
+          <img src="../assets/images/logo.png" alt="logo" />
+        </div>
+
+        <div class="dashboard-links-container">
+          <a
+            href="./dashboard.html"
+            class="rounded-text grey-text category-tag dashboard-link"
+          >
+            <img
+              src="../assets//images//dashboard-icons/dashboard.svg"
+              alt=""
+            />
+            <p>Dashboard</p>
+          </a>
+          <a
+            href="./dashboard-articles.html"
+            class="rounded-text grey-text category-tag dashboard-link"
+            id="active-dashboard-link"
+          >
+            <img src="../assets//images//dashboard-icons/articles.svg" alt="" />
+            <p>Articles</p>
+          </a>
+          <a
+            href="./dashboard-messages.html"
+            class="rounded-text grey-text category-tag dashboard-link"
+          >
+            <img src="../assets//images//dashboard-icons/messages.svg" alt="" />
+            <p>Messages</p>
+          </a>
+          <a
+            href="./dashboard-users.html"
+            class="rounded-text grey-text category-tag dashboard-link"
+          >
+            <img src="../assets//images//dashboard-icons/users.svg" alt="" />
+            <p>Users</p>
+          </a>
+          <a
+            href="./dashboard-projects.html"
+            class="rounded-text grey-text category-tag dashboard-link"
+          >
+            <img src="../assets//images//dashboard-icons/projects.svg" alt="" />
+            <p>Projects</p>
+          </a>
+          <a
+            href="./dashboard-tesimonial.html"
+            class="rounded-text grey-text category-tag dashboard-link"
+          >
+            <img
+              src="../assets//images//dashboard-icons/testimonial.svg"
+              alt=""
+            />
+            <p>Testimonials</p>
+          </a>
+        </div>
+        <button
+          class="rounded-text grey-text category-tag dashboard-link dashboard-logout"
+          id="logout-button"
+        >
+          <p>Logout</p>
+          <img src="../assets//images//dashboard-icons/logout.svg" alt="" />
+        </button>
+      </aside>
+
+      <div class="dashboard-content-container">
+        <div class="dashboard-header">
+          <div class="input-for search-form">
+            <input
+              type="search"
+              name="email"
+              id="email"
+              placeholder="Enter Your Email"
+            />
+            <span class="material-symbols-outlined"> search </span>
+          </div>
+          <div class="dashboard-user-info">
+            <img
+              src="../assets/images/my-avatar.svg"
+              alt="avatar"
+              class="avatar"
+            />
+            <div>
+              <p class="white-text small-text title">Eddy</p>
+              <p class="grey-text small-text">Admin</p>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-content">
+          <div class="dashboard-tags-container">
+            <div class="dashboard-tag">
+              <img src="../assets/images/dashboard-icons/comment.svg" alt="" />
+              <div>
+                <p class="title white-text">Total Comments</p>
+                <p class="title grey-text big-text">20</p>
+              </div>
+            </div>
+            <div class="dashboard-tag">
+              <img src="../assets/images/dashboard-icons/eye.svg" alt="" />
+              <div>
+                <p class="title white-text">Total Views</p>
+                <p class="title grey-text big-text">20</p>
+              </div>
+            </div>
+
+            <div class="dashboard-tag">
+              <img src="../assets/images/dashboard-icons/articles.svg" alt="" />
+              <div>
+                <p class="title white-text">Total Articles</p>
+                <p class="title grey-text big-text" id="total-articles">20</p>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-data-container">
+            <div class="dashboard-blog-container dashboard-all-blogs">
+              <div class="dashboard-blog-container-upper">
+                <div>
+                  <p class="title white-text small-text">Recent Articles</p>
+                  <div>
+                    <p class="small-text title">Category:</p>
+                    <p class="white-text rounded-text category-tag small-text">
+                      All
+                    </p>
+                  </div>
+                </div>
+                <a
+                  href="./dashboard-add-blog.html"
+                  class="white-text rounded-text category-tag small-text"
+                  >+ New</a
+                >
+              </div>
+              <div class="dashboard-blog-container-map">
+                <table class="dashboard-blog-table">
+                  <thead>
+                    <tr class="">
+                      <th class="small-text text-white">Poster</th>
+                      <th class="small-text text-white">Title</th>
+                      <th class="small-text text-white">Category</th>
+                      <!-- <th class="small-text text-white">Views</th> -->
+                      <th class="small-text text-white">Likes</th>
+                      <th class="small-text text-white">Comments</th>
+                      <th class="small-text text-white">Created At</th>
+                      <th class="small-text text-white"></th>
+                      <th class="small-text text-white"></th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="dashboard-blog-table-body">
+                    <tr id="dashboard-blog-row">
+                      <td>
+                        <img
+                          src="../assets/images/company-logo.png"
+                          alt=""
+                          class="dashboard-blog-poster"
+                        />
+                      </td>
+
+                      <td>
+                        <p class="small-text blog-title">
+                          ChatGPT : A Developer's Best Friend or Worst Enemy?
+                        </p>
+                      </td>
+                      <td>
+                        <p class="small-text">Technology</p>
+                      </td>
+                      <td>
+                        <div class="like">
+                          <img
+                            src="../assets//images//dashboard-icons/eye.svg"
+                            alt=""
+                          />
+                          <p class="light-text smaller-text">12 views</p>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="like">
+                          <img
+                            src="../assets//images//dashboard-icons/heart.svg"
+                            alt=""
+                          />
+                          <p class="light-text smaller-text">12 likes</p>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="like">
+                          <img
+                            src="../assets//images//dashboard-icons/comment.svg"
+                            alt=""
+                          />
+                          <p class="light-text smaller-text">12 comments</p>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="small-text">04/February/2024</p>
+                      </td>
+                      <td>
+                        <p
+                          class="small-text rounded-text text-blue title category-tag"
+                        >
+                          View
+                        </p>
+                      </td>
+                      <td>
+                        <p
+                          class="small-text rounded-text text-green title category-tag"
+                        >
+                          Edit
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img
+                          src="../assets/images/company-logo.png"
+                          alt=""
+                          class="dashboard-blog-poster"
+                        />
+                      </td>
+
+                      <td>
+                        <p class="small-text blog-title">
+                          ChatGPT : A Developer's Best Friend or Worst Enemy?
+                        </p>
+                      </td>
+                      <td>
+                        <p class="small-text">Technology</p>
+                      </td>
+                      <td>
+                        <div class="like">
+                          <img
+                            src="../assets//images//dashboard-icons/eye.svg"
+                            alt=""
+                          />
+                          <p class="light-text smaller-text">12 views</p>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="like">
+                          <img
+                            src="../assets//images//dashboard-icons/heart.svg"
+                            alt=""
+                          />
+                          <p class="light-text smaller-text">12 likes</p>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="like">
+                          <img
+                            src="../assets//images//dashboard-icons/comment.svg"
+                            alt=""
+                          />
+                          <p class="light-text smaller-text">12 comments</p>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="small-text">04/February/2024</p>
+                      </td>
+                      <td>
+                        <p
+                          class="small-text rounded-text text-blue title category-tag"
+                        >
+                          View
+                        </p>
+                      </td>
+                      <td>
+                        <p
+                          class="small-text rounded-text text-green title category-tag"
+                        >
+                          Edit
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../Js/dashboard.js"></script>
+    <script>
+      let allArticles = JSON.parse(localStorage.getItem("articles")) || [];
+      let messageRow = document.getElementById("dashboard-blog-row");
+      const totalArticles = document.getElementById("total-articles");
+      totalArticles.innerText = allArticles.length;
+      console.log("All articles", allArticles);
+
+      const populateBlogTable = (articles) => {
+        let tableBody = document.getElementById("dashboard-blog-table-body");
+        tableBody.innerHTML = "";
+
+        articles.map((article, index) => {
+          let row = document.createElement("tr");
+          row.classList.add("dashboard-blog-row");
+
+          // poster
+          let posterTD = document.createElement("td");
+          let poster = document.createElement("img");
+          poster.src = article.poster;
+          poster.classList.add("dashboard-blog-poster");
+
+          posterTD.appendChild(poster);
+
+          // title
+          let titleTD = document.createElement("td");
+          let title = document.createElement("p");
+          title.innerText = article.title;
+          title.classList.add("small-text", "blog-title");
+
+          titleTD.appendChild(title);
+
+          // category
+          let categoryTD = document.createElement("td");
+          let category = document.createElement("p");
+          category.innerText = article.category;
+          category.classList.add("small-text");
+
+          categoryTD.appendChild(category);
+
+          // likes
+          let viewTD = document.createElement("td");
+          let view = document.createElement("div");
+          let viewIcon = document.createElement("img");
+          let viewSize = document.createElement("p");
+          viewIcon.src = "../assets/images/dashboard-icons/eye.svg";
+          viewSize.classList.add("smaller-text", "light-text");
+          viewSize.innerText = "10" + "-views" || "12 views";
+          view.appendChild(viewIcon);
+          view.appendChild(viewSize);
+          view.classList.add("like");
+
+          viewTD.appendChild(view);
+
+          let allLikes = undefined;
+
+          // likes
+          let likeTD = document.createElement("td");
+          let like = document.createElement("div");
+          let likeIcon = document.createElement("img");
+          let likeSize = document.createElement("p");
+          likeIcon.src = "../assets/images/dashboard-icons/heart.svg";
+
+          fetch(`http://localhost:8080/likes/blogs/${article._id}`)
+            .then((response) => response.json())
+            .then((data) => {
+              likeSize.classList.add("smaller-text", "light-text");
+              likeSize.innerText = data.data?.length + " likes" || "0 likes";
+            })
+            .catch((error) => {
+              console.error("Error fetching data:", error);
+            });
+
+          like.appendChild(likeIcon);
+          like.appendChild(likeSize);
+          like.classList.add("like");
+
+          likeTD.appendChild(like);
+
+          // commentss
+          let commentsTD = document.createElement("td");
+          let comments = document.createElement("div");
+          let commentsIcon = document.createElement("img");
+          let commentsSize = document.createElement("p");
+          commentsIcon.src = "../assets/images/dashboard-icons/comment.svg";
+          commentsSize.classList.add("smaller-text", "light-text");
+
+          fetch(`http://localhost:8080/comments/blogs/${article._id}`)
+            .then((response) => response.json())
+            .then((data) => {
+              commentsSize.innerText =
+                data.data?.length + " comments" || "0 comments";
+            })
+            .catch((error) => {
+              console.error("Error fetching data:", error);
+            });
+
+          comments.appendChild(commentsIcon);
+          comments.appendChild(commentsSize);
+          comments.classList.add("like");
+          commentsTD.appendChild(comments);
+
+          // date
+          let dateTD = document.createElement("td");
+          let date = document.createElement("p");
+          date.innerText = article.createdAt.split("T")[0];
+          date.classList.add("small-text");
+          date.style.fontSize = "12px";
+
+          dateTD.appendChild(date);
+
+          // View Button
+          let viewButtonTD = document.createElement("td");
+          let viewButton = document.createElement("button");
+          viewButton.textContent = "View";
+          viewButton.classList.add(
+            "small-text",
+            "rounded-text",
+            "text-blue",
+            "title",
+            "category-tag"
+          );
+          // Add click event listener to "View" link
+          viewButton.addEventListener(
+            "click",
+            () =>
+              (window.location.href = `./dashboard-single-blog.html?index=${article._id}`)
+          );
+          viewButtonTD.appendChild(viewButton);
+
+          // edit
+
+          let editButtonTD = document.createElement("td");
+          editButtonTD.innerHTML = `<a  class="text-green"> <button class="small-text rounded-text text-green title category-tag">Edit</button></a>`;
+
+          // append all
+          row.appendChild(posterTD, titleTD, categoryTD);
+          row.appendChild(titleTD);
+          row.appendChild(categoryTD);
+          // row.appendChild(viewTD)
+          row.appendChild(likeTD);
+          row.appendChild(commentsTD);
+          row.appendChild(dateTD);
+          row.appendChild(viewButtonTD);
+          row.appendChild(editButtonTD);
+
+          tableBody.appendChild(row);
+        });
+      };
+
+      fetch(`http://localhost:8080/blogs`)
+        .then((response) => response.json())
+        .then((data) => {
+          APIBlogs = data; // Assign the fetched data to the variable
+          console.log(data[0]);
+          populateBlogTable(data);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    </script>
+
+    <!-- protect dashboard from unauthorised access -->
+    <script>
+      const logoutButton = document.getElementById("logout-button");
+      // const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+      console.log("loggedUser", loggedUser);
+
+      if (!loggedUser || loggedUser.role != "admin") {
+        window.location.href = "../index.html";
+      } else {
+      }
+
+      logoutButton.addEventListener("click", () => {
+        localStorage.removeItem("loggedUser");
+        (successContainer.style.display = "flex"),
+          (successElement.innerHTML = "Logged out successfully");
+        timeDelay(successContainer, successElement);
+        window.location.href = "../index.html";
+      });
+    </script>
+    <script src="../Js/theme.js"></script>
+  </body>
+</html>

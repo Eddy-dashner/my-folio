@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="../assets/images/logo-color.svg"
+      type="image/x-icon"
+    />
+    <title>My Brand</title>
+  </head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <body>
+    <div class="dashboard-container">
+      <div class="error-container" id="error-container">
+        <span class="material-symbols-outlined" id="error-icon"> error </span>
+        <p id="error-text" class="error-text"></p>
+      </div>
+
+      <div class="success-container" id="success-container">
+        <span class="material-symbols-outlined" id="error-icon">
+          check_circle
+        </span>
+        <p id="success-text" class="success-text"></p>
+      </div>
+
+      <aside class="dashboard-sidebar">
+        <div class="dashboard-image-logo">
+          <img src="../assets/images/logo.png" alt="logo" />
+        </div>
+
+        <div class="dashboard-links-container">
+          <a
+            href="./dashboard.html"
+            class="rounded-text grey-text category-tag dashboard-link"
+          >
+            <img
+              src="../assets//images//dashboard-icons/dashboard.svg"
+              alt=""
+            />
+            <p>Dashboard</p>
+          </a>
+          <a
+            href="./dashboard-articles.html"
+            class="rounded-text grey-text category-tag dashboard-link"
+          >
+            <img src="../assets//images//dashboard-icons/articles.svg" alt="" />
+            <p>Articles</p>
+          </a>
+          <a
+            href="./dashboard-messages.html"
+            class="rounded-text grey-text category-tag dashboard-link"
+            id="active-dashboard-link"
+          >
+            <img src="../assets//images//dashboard-icons/messages.svg" alt="" />
+            <p>Messages</p>
+          </a>
+          <a
+            href="./dashboard-users.html"
+            class="rounded-text grey-text category-tag dashboard-link"
+          >
+            <img src="../assets//images//dashboard-icons/users.svg" alt="" />
+            <p>Users</p>
+          </a>
+          <a
+            href="./dashboard-projects.html"
+            class="rounded-text grey-text category-tag dashboard-link"
+          >
+            <img src="../assets//images//dashboard-icons/projects.svg" alt="" />
+            <p>Projects</p>
+          </a>
+          <a
+            href="./dashboard-tesimonial.html"
+            class="rounded-text grey-text category-tag dashboard-link"
+          >
+            <img
+              src="../assets//images//dashboard-icons/testimonial.svg"
+              alt=""
+            />
+            <p>Testimonials</p>
+          </a>
+        </div>
+        <button
+          class="rounded-text grey-text category-tag dashboard-link dashboard-logout"
+          id="logout-button"
+        >
+          <p>Logout</p>
+          <img src="../assets//images//dashboard-icons/logout.svg" alt="" />
+        </button>
+      </aside>
+
+      <div class="dashboard-content-container">
+        <div class="dashboard-header">
+          <div class="input-for search-form">
+            <input
+              type="search"
+              name="email"
+              id="email"
+              placeholder="Enter Your Email"
+            />
+            <span class="material-symbols-outlined"> search </span>
+          </div>
+          <div class="dashboard-user-info">
+            <img
+              src="../assets/images/my-avatar.svg"
+              alt="avatar"
+              class="avatar"
+            />
+            <div>
+              <p class="white-text small-text title">Eddy</p>
+              <p class="grey-text small-text">Admin</p>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-content">
+          <div class="dashboard-tags-container">
+            <div class="dashboard-tag">
+              <img src="../assets/images/dashboard-icons/comment.svg" alt="" />
+              <div>
+                <p class="title white-text">Total Comments</p>
+                <p class="title grey-text big-text" id="total-comments">20</p>
+              </div>
+            </div>
+            <div class="dashboard-tag">
+              <img src="../assets/images/dashboard-icons/eye.svg" alt="" />
+              <div>
+                <p class="title white-text" id="total-views">Total Views</p>
+                <p class="title grey-text big-text">20</p>
+              </div>
+            </div>
+
+            <div class="dashboard-tag">
+              <img src="../assets/images/dashboard-icons/articles.svg" alt="" />
+              <div>
+                <p class="title white-text" id="total-articles">
+                  Total Articles
+                </p>
+                <p class="title grey-text big-text">20</p>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-data-container">
+            <div class="dashboard-blog-container dashboard-all-blogs">
+              <div class="dashboard-blog-container-upper">
+                <div>
+                  <p class="title white-text small-text">Recent Messages</p>
+                </div>
+                <button
+                  class="button button-primary small-text bg-dark red-text"
+                  id="delete-all-messages"
+                  onclick="deleteAllmessages()"
+                >
+                  Delete all messages
+                </button>
+              </div>
+              <div class="dashboard-blog-container-map">
+                <table class="dashboard-blog-table dashboard-messages-table">
+                  <thead>
+                    <tr className="bg-dark">
+                      <th className="small-text text-white">Name</th>
+                      <th className="small-text text-white">Email</th>
+                      <th className="small-text text-white">Telephone</th>
+                      <th className="small-text text-white">Date</th>
+                      <th className="small-text text-white ">Time</th>
+                      <th className="small-text text-white ">Message</th>
+                      <th className="small-text text-white "></th>
+                      <th className="small-text text-white "></th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="messages-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../Js/dashboard.js"></script>
+    <!-- protect dashboard from unauthorised access -->
+    <script>
+      const logoutButton = document.getElementById("logout-button");
+
+      if (!loggedUser || loggedUser.role != "admin") {
+        window.location.href = "../index.html";
+      } else {
+      }
+
+      logoutButton.addEventListener("click", () => {
+        localStorage.removeItem("loggedUser");
+        (successContainer.style.display = "flex"),
+          (successElement.innerHTML = "Logged out successfully");
+        timeDelay(successContainer, successElement);
+        window.location.href = "../index.html";
+      });
+    </script>
+    <script src="../Js/theme.js"></script>
+    <script>
+      let allMessages = JSON.parse(localStorage.getItem("messages")) || [];
+      // let allMessagesArray = JSON.parse(allMessages);
+      let messageRow = document.getElementById("message-row");
+
+      console.log("All messages", allMessages);
+
+      // Function to populate messages in the table
+
+      function onViewClick(messageIndex) {
+        let url = `./dashboard-single-message.html?index=${messageIndex}`;
+        window.location.href = url;
+      }
+      function populateMessagesTable(messages) {
+        let tableBody = document.getElementById("messages-table-body");
+        // tableBody.innerHTML = '';
+
+        messages.map((message, index) => {
+          if (message?._id) {
+            let row = document.createElement("tr");
+            row.classList.add("dashboard-blog-row");
+
+            let nameTD = document.createElement("td");
+            let name = document.createElement("p");
+            name.classList.add(
+              "dashboard-blog-title",
+              "small-text",
+              "one-liner"
+            );
+            name.innerText = message.name;
+
+            nameTD.appendChild(name);
+
+            let emailTD = document.createElement("td");
+            let email = document.createElement("p");
+            email.classList.add(
+              "dashboard-blog-title",
+              "small-text",
+              "one-liner"
+            );
+            email.innerText = message.email;
+
+            emailTD.appendChild(email);
+
+            let phoneTD = document.createElement("td");
+            let phone = document.createElement("p");
+            phone.classList.add(
+              "dashboard-blog-title",
+              "small-text",
+              "one-liner"
+            );
+            phone.innerText = message.phone;
+
+            phoneTD.appendChild(phone);
+
+            let dateTD = document.createElement("td");
+            let date = document.createElement("p");
+            date.classList.add(
+              "dashboard-blog-title",
+              "small-text",
+              "one-liner"
+            );
+            date.innerText = message?.createdAt
+              ?.split("T")[0]
+              ?.split("-")
+              ?.join("/");
+
+            dateTD.appendChild(date);
+
+            let timeTD = document.createElement("td");
+            let time = document.createElement("p");
+            time.classList.add(
+              "dashboard-blog-title",
+              "small-text",
+              "one-liner"
+            );
+            time.innerText = message.createdAt?.split("T")[1]?.split(".")[0];
+
+            timeTD.appendChild(time);
+
+            let myMessageTD = document.createElement("td");
+            let myMessage = document.createElement("p");
+            myMessage.classList.add(
+              "dashboard-blog-title",
+              "small-text",
+              "one-liner"
+            );
+            myMessage.innerText = message.message;
+
+            myMessageTD.appendChild(myMessage);
+
+            let viewButtonTD = document.createElement("td");
+            let viewButton = document.createElement("a");
+            viewButton.textContent = "View";
+            viewButton.classList.add(
+              "small-text",
+              "rounded-text",
+              "text-blue",
+              "title",
+              "category-tag"
+            );
+            viewButton.href = `./dashboard-single-message.html?index=${message._id}`;
+            // Add click event listener to "View" link
+            viewButton.addEventListener(
+              "click",
+              () =>
+                (window.location.href = `./dashboard-single-message.html.html?index=${message._id}`)
+            );
+            viewButtonTD.appendChild(viewButton);
+
+            let replyCell = document.createElement("td");
+            replyCell.innerHTML = `<a href="mailto:${message.email} class="text-yellow"> <button class="small-text rounded-text text-yellow title category-tag">Reply</button></a>`;
+            row.appendChild(replyCell);
+
+            row.appendChild(nameTD);
+            row.appendChild(emailTD);
+            row.appendChild(phoneTD);
+            row.appendChild(dateTD);
+            row.appendChild(timeTD);
+            row.appendChild(myMessageTD);
+            row.appendChild(viewButton);
+            row.appendChild(replyCell);
+
+            tableBody.appendChild(row);
+
+            // Create table cells for each property in the message object
+            // Object.values(message).forEach(value => {
+
+            //     let cell = document.createElement('td');
+            //     cell.innerHTML = `<p class="small-text one-liner">${value}</p>`;
+            //     row.appendChild(cell);
+            // });
+
+            // Create View and Reply links
+            // let viewLinkCell = document.createElement('td');
+            // viewLinkCell.innerHTML = `<a href="./dashboard-single-message.html" class="small-text rounded-text text-blue title category-tag">View</a>`;
+            // row.appendChild(viewLinkCell);
+
+            // let viewLinkCell = document.createElement('td');
+            // let viewLink = document.createElement('button');
+            // // viewLink.href = `./dashboard-single-message.html?index=1`; // Prevent default link behavior
+            // viewLink.textContent = 'View';
+            // viewLink.classList.add('small-text', 'rounded-text', 'text-blue', 'title', 'category-tag');
+            // // Add click event listener to "View" link
+            // viewLink.addEventListener('click', () => onViewClick(index));
+            // viewLinkCell.appendChild(viewLink);
+            // row.appendChild(viewLinkCell);
+
+            // let replyCell = document.createElement('td');
+            // replyCell.innerHTML = `<a href="mailto:${message.email} class="text-yellow"> <button class="small-text rounded-text text-yellow title category-tag">Reply</button></a>`;
+            // row.appendChild(replyCell);
+
+            // // Append row to the table body
+            // tableBody.appendChild(row);
+          }
+        });
+      }
+
+      fetch(`http://localhost:8080/messages`, {
+        headers: myHeaders,
+        method: "GET",
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          populateMessagesTable(data);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+
+      // Call the function to populate the table initially
+
+      const deleteAllmessages = () => {
+        // localStorage.removeItem("messages");
+        // alert('All messages deleted')
+      };
+
+      // Blogs Integration
+
+      let allBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
+      console.log("All blogs", allBlogs);
+
+      let blogRow = document.getElementById("blog-row");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link rel="stylesheet" href="../css/blog.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="../assets/images/logo-color.svg"
+      type="image/x-icon"
+    />
+    <title>Blog</title>
+    <script src="../Js/index.js"></script>
+    <script src="../Js/contactForm.js"></script>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="error-container" id="error-container">
+        <span class="material-symbols-outlined" id="error-icon"> error </span>
+        <p id="error-text" class="error-text"></p>
+      </div>
+      <div class="success-container" id="success-container">
+        <span class="material-symbols-outlined" id="error-icon">
+          check_circle
+        </span>
+        <p id="success-text" class="success-text"></p>
+      </div>
+      <nav class="nav">
+        <div class="desktop-nav">
+          <button class="button theme-button" id="theme-button">
+            <span class="material-symbols-outlined dark-text" id="theme-icon">
+              light_mode
+            </span>
+          </button>
+          <div class="links-container">
+            <div class="links">
+              <ul>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+            <a href="../index.html" class="logo">
+              <img src="../assets/images/logo.png" alt="logo" />
+            </a>
+            <div class="links">
+              <ul>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
+
+          <a
+            href="./LoginPage.html"
+            rel="noopener noreferrer"
+            class="button blog-button"
+          >
+            <div class="blog-button-content">
+              <p>LOGIN</p>
+              <span class="material-symbols-outlined"> chevron_right </span>
+            </div>
+          </a>
+
+          <!-- <a  href="" rel="noopener noreferrer" class=" user-logo-button">
+            <div class="blog-button-content user-button-content">
+              <img src="../assets/images/no-profile.webp" class="avatar"/>
+              <p class="title"> User Name</p>
+            </div>
+          </a>           -->
+          <div rel="noopener noreferrer" class="user-name-profile" title="">
+            <div class="letter">
+              <h3 class="grey-text">G</h3>
+              <div class="info">
+                <p class="white-text">Nzobarinda Eddy</p>
+                <p>Admin</p>
+                <div
+                  class="rounded-text grey-text category-tag dashboard-link dashboard-logout"
+                >
+                  <p>Logout</p>
+                  <img
+                    src="../assets//images//dashboard-icons/logout.svg"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <script>
+            const blogButton = document.querySelector(".blog-button");
+            const profileIcon = document.querySelector(".user-name-profile");
+            const handleLogout = () => {
+              localStorage.removeItem("loggedUser");
+              (successContainer.style.display = "flex"),
+                (successElement.innerHTML = "Logged out successfully");
+              timeDelay(successContainer, successElement);
+              window.location.reload();
+            };
+            console.log("LoggedUser", loggedUser);
+
+            const navigate = () => {
+              if (loggedUser.role == "admin") {
+                window.location.href = "../dashboard/dashboard.html";
+              } else if (loggedUser.role == "user") {
+                window.location.href =
+                  "../user-dashboard/user-dashboard-profile.html";
+              }
+            };
+
+            const openIcon = () => {
+              profileInfo.style.display = "block";
+              profileInfo.style.opacity = 1;
+            };
+
+            const closeIcon = () => {
+              profileInfo.style.display = "none";
+              profileInfo.style.opacity = 0;
+            };
+            if (loggedUser) {
+              blogButton.style.display = "none";
+              profileIcon.style.display = "flex";
+              profileIcon.title = loggedUser.name + ", " + loggedUser.role;
+
+              profileIcon.innerHTML = `
+              <div class="letter" onClick="openIcon()">
+              <h3 class="grey-text">${loggedUser.name
+                .split("")[0]
+                .toUpperCase()}</h3>
+              <div class="info user-setting-info">
+                <div class="user-close-container">
+                <p class="white-text">${
+                  loggedUser.name
+                } <span style=textDecoration:"capitalize"></span></p>
+                <button onClick="closeIcon()" class="button">X</button>
+                  </div>
+                
+                <button onClick="navigate()" class="rounded-text grey-text category-tag dashboard-link">
+                  <p>My Dashboard</p>
+                  <img src="../assets//images//dashboard-icons/dashboard.svg" alt="">
+              </button>
+                <button onClick="handleLogout()" class="rounded-text grey-text category-tag dashboard-link dashboard-logout">
+                  <p>Logout</p>
+                  <img src="../assets//images//dashboard-icons/logout.svg" alt="">
+              </button>
+              </div>
+            </div>
+              `;
+            } else {
+              blogButton.style.display = "flex";
+              profileIcon.style.display = "none";
+            }
+
+            const profileInfo = document.querySelector(".user-setting-info");
+          </script>
+        </div>
+        <div class="mobile-nav">
+          <div class="menu-bar">
+            <div class="logo">
+              <img src="../assets/images/logo.png" alt="logo" />
+            </div>
+            <div class="burger">
+              <div class="burger-line burger-line1"></div>
+              <div class="burger-line burger-line2"></div>
+              <div class="burger-line burger-line3"></div>
+            </div>
+          </div>
+
+          <div class="mobile-links">
+            <ul>
+              <li><a href="">Home</a></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li>
+                <a
+                  href="./LoginPage.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="button-white button"
+                >
+                  BLOG</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- homepage -->
+
+      <div class="skills-section blog-home" id="blog-home">
+        <!-- <div class="rounded-text white-text"><p>Hola</p></div> -->
+        <div><h3 class="big-text">Welcome to my Blog</h3></div>
+        <div>
+          <p class="grey-text text-center join-text">
+            Join me on my journey as I share my insights and experiences on web
+            development, business, and content creation.
+          </p>
+        </div>
+
+        <div class="subscribe-section blog-subscribe-section">
+          <div class="subscribe-email-input">
+            <input type="email" name="email" placeholder="Enter Your email" />
+            <button class="button">Subscribe</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-page-section">
+        <div><h3 class="big-text text-center">Latest Blogs</h3></div>
+
+        <div class="blog-page-categories">
+          <p
+            class="rounded-text white-text category-tag active-tag all-tag blog-category-tag"
+            id="all-tag"
+          >
+            All categories
+          </p>
+
+          <p
+            class="rounded-text white-text category-tag technology-tag blog-category-tag"
+          >
+            Technology
+          </p>
+
+          <p
+            class="rounded-text white-text category-tag web-tag blog-category-tag"
+          >
+            Web Development
+          </p>
+
+          <p
+            class="rounded-text white-text category-tag hosting-tag blog-category-tag"
+          >
+            Web Hosting
+          </p>
+        </div>
+
+        <div class="blog-container-section">
+          <!-- <a href="./single-blog-page.html"  class="blog-home-card">
+    <img src="../assets/images/deepmind.webp" alt="Blog Image" class="blog-image"/>
+    <div class="blog-home-card-details">
+      <div class="rounded-text white-text category-tag" id="active-tag"><p>All categories</p></div>
+      <p class="white-text title blog-title">Architectural Engineering Wonders of the modern era for your Inspiration</p>
+      <div class="blog-home-card-info">
+        <img src="../assets/images/my-avatar.svg" alt="" class="avatar">
+        <p class="grey-text">Eddy </p>
+        <p class="grey-text">&#x2022;</p>
+        <p class="grey-text">22 January 2024</p>
+        
+      </div>
+    </div>
+  </a> -->
+        </div>
+
+        <div class="projects-section-navigation blogs-section-navigation">
+          <div class="projects-section-navigation-container">
+            <div id="navigator-left  " class="arrow">
+              <span class="material-symbols-outlined" style="font-size: small">
+                arrow_back_ios
+              </span>
+              <p>Previous</p>
+            </div>
+            <div id="navigator-right" class="arrow">
+              <p>Next</p>
+              <span class="material-symbols-outlined" style="font-size: small">
+                arrow_forward_ios
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer" id="contact">
+        <div class="rounded-text white-text"><p>Contact us</p></div>
+        <div class="footer-main">
+          <div class="footer-section footer-left">
+            <h3 class="big-text">Get in touch with me!</h3>
+            <div class="footer-details">
+              <p class="title white-text small-text">Location</p>
+              <p class="content grey-text small-text">Kigali Rwanda</p>
+            </div>
+
+            <div class="footer-details">
+              <p class="title white-text small-text">Connect</p>
+              <div class="contact-info">
+                <p class="content grey-text small-text">Email:</p>
+                <a
+                  href="mailto=ishNzobarinda@gmail.com"
+                  class="content grey-text small-text"
+                  >ishNzobarinda@gmail.com</a
+                >
+              </div>
+              <div class="contact-info">
+                <p class="content grey-text small-text">Phone:</p>
+                <a href="" class="content grey-text small-text">0785534291</a>
+              </div>
+            </div>
+            <div class="footer-details social-links">
+              <p class="title white-text small-text">Social Links</p>
+              <div class="icons">
+                <div class="socials">
+                  <img src="../assets/images/linkedin.png" alt="" />
+                </div>
+                <div class="socials">
+                  <img src="../assets/images/twitter.png" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-section footer-right">
+            <form class="contact-form" id="contact-form" method="GET">
+              <div class="input-form">
+                <p class="white-text grey-text">Name</p>
+                <input
+                  type="text"
+                  name="name"
+                  id="contact-form-name"
+                  placeholder="Enter Your Name"
+                />
+                <p
+                  class="small-text red-text error"
+                  id="contact-form-name-error"
+                ></p>
+              </div>
+              <div class="input-form">
+                <p class="white-text grey-text">Email</p>
+                <input
+                  type="text"
+                  name="email"
+                  id="contact-form-email"
+                  placeholder="Enter Your Email"
+                />
+                <p
+                  class="small-text red-text error"
+                  id="contact-form-email-error"
+                ></p>
+              </div>
+              <div class="input-form">
+                <p class="white-text grey-text">Phone Number</p>
+                <input
+                  type="text"
+                  name="phone"
+                  id="contact-form-phone"
+                  placeholder="Enter Your Name"
+                />
+                <p
+                  class="small-text red-text error"
+                  id="contact-form-phone-error"
+                ></p>
+              </div>
+              <div class="input-form">
+                <p class="white-text grey-text small-text">Message</p>
+                <label for="message"></label>
+                <textarea
+                  name="message"
+                  id="contact-form-message"
+                  rows="3"
+                ></textarea>
+                <p
+                  class="small-text red-text error"
+                  id="contact-form-message-error"
+                ></p>
+              </div>
+              <div class="input-form">
+                <!-- <input type="button" value="Send Message" class="button button-white" id="contact-form-submit-button"> -->
+                <button
+                  type="submit"
+                  value=""
+                  class="button"
+                  id="contact-form-submit-button"
+                >
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="small-text grey-text copyright">
+          <p>&copy; 2024 . All rights reserved Eddy</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let categoryTag = document.querySelectorAll(".blog-category-tag");
+      let allTag = document.getElementById("all-tag");
+      categoryTag.innerHTML = "category";
+      let allBlogs = JSON.parse(localStorage.getItem("articles"));
+
+      allTag.addEventListener("click", () => {
+        showBlogs(allBlogs);
+      });
+
+      let APIBlogs = []; // Initialize the variable outside the fetch block
+      const apiUrl = "http://localhost:8080/blogs"; // Replace with your API URL
+
+      categoryTag.forEach((element) => {
+        element.addEventListener("click", () => {
+          element.classList.add("active-tag");
+          if (!element) {
+            element.classList.remove("active-tag");
+          }
+          const selectedCategory = element.innerText
+            .toLowerCase()
+            .split(" ")
+            .join("-");
+          const filteredBlogs = allBlogs.filter(
+            (blog) => blog.category === selectedCategory
+          );
+          showBlogs(filteredBlogs);
+        });
+      });
+
+      allTag.addEventListener("click", () => {
+        showBlogs(allBlogs);
+      });
+
+      function showBlogs(blogs) {
+        const blogCardsContainer = document.querySelector(
+          ".blog-container-section"
+        );
+        blogCardsContainer.innerHTML = "";
+
+        blogs.forEach((blog, index) => {
+          const card = document.createElement("a");
+          card.classList.add("blog-home-card");
+          card.href = `./single-blog-page.html?index=${blog._id}`;
+
+          const img = document.createElement("img");
+          img.src = blog.poster;
+          img.alt = "Blog Image";
+          img.classList.add("blog-image");
+          card.appendChild(img);
+
+          const details = document.createElement("div");
+          details.classList.add("blog-home-card-details");
+
+          const category = document.createElement("div");
+          category.classList.add("rounded-text", "white-text", "category-tag");
+          category.innerHTML = `<p class="rounded-text category-tag active-tag bg-grey ">${blog.category
+            .split("-")
+            .join(" ")}</p>`;
+          details.appendChild(category);
+
+          const title = document.createElement("p");
+          title.classList.add("white-text", "title", "blog-title");
+          title.innerText = blog.title;
+          details.appendChild(title);
+
+          // Append other details (if needed)
+          // Add author info
+          const info = document.createElement("div");
+          info.classList.add("blog-home-card-info");
+
+          // Add avatar, author, date
+          info.innerHTML = `
+    <img src="../assets/images/my-avatar.svg" alt="" class="avatar">
+    <p class="grey-text">${blog.editor || "Eddy "}</p> 
+    <p class="grey-text">&#x2022;</p>
+    <p class="grey-text">${blog.createdAt.split("T")[0]}</p>
+  `;
+
+          details.appendChild(info);
+          card.appendChild(details);
+          blogCardsContainer.appendChild(card);
+        });
+      }
+
+      fetch(apiUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          APIBlogs = data; // Assign the fetched data to the variable
+          console.log("data in fetch", data);
+          showBlogs(data.reverse());
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+
+      // Now you can use APIBlogs outside the fetch block
+      console.log("APIBlog outside fetch:", APIBlogs);
+    </script>
+
+    <!-- theme control -->
+    <script>
+      let themeButton = document.querySelector("#theme-button");
+      let themeIcon = document.querySelector("#theme-icon");
+      let logoImage = document.querySelector("#logo-image");
+      let theme = localStorage.getItem("theme");
+      // create default theme as light
+      if (theme == null) {
+        localStorage.setItem("theme", "dark");
+      }
+      const root = document.documentElement;
+
+      themeButton.addEventListener("click", () => {
+        if (theme === "dark") {
+          localStorage.setItem("theme", "light");
+          theme = "light";
+          root.style.setProperty("--dark", "#9394A5");
+          root.style.setProperty("--darker", "#D2D3DB");
+          root.style.setProperty("--darkest", "#E4E5F1");
+          root.style.setProperty("--white", "#19181e");
+          root.style.setProperty("--dark-white", "#19181e");
+          root.style.setProperty("--grey", "#23202a");
+          themeIcon.innerHTML = "dark_mode";
+          logoImage.src = "./assets/images/logo-color.svg";
+        } else if (theme === "light") {
+          localStorage.setItem("theme", "dark");
+          theme = "dark";
+          root.style.setProperty("--dark", "#23202a");
+          root.style.setProperty("--darker", "#1e1b24");
+          root.style.setProperty("--darkest", "#19181e");
+          root.style.setProperty("--white", "#ffffff");
+          root.style.setProperty("--grey", "#999cb4");
+          root.style.setProperty("--dark-white", "#e6e4e4");
+          themeIcon.innerHTML = "light_mode";
+          // themeIcon.sytle.display = 'white';
+          logoImage.src = "./assets/images/logo.png";
+        } else {
+          localStorage.setItem("theme", "dark");
+        }
+      });
+
+      //   const deleteTheme = ()=>{
+
+      //     localStorage.removeItem("theme");
+      // }
+      // themeButton.addEventListener("click",()=>{
+      //   deleteTheme();
+      // })
+    </script>
+  </body>
+</html>
