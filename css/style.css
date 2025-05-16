@@ -884,20 +884,21 @@ textarea {
 }
 
 /* Horizontal Scroll Container */
+/* Horizontal Scroll Container */
+/* Container holding the project cards */
 .projects-section-projects-container {
   display: flex;
   flex-direction: row;
-  gap: var(--p-3);
+  align-items: flex-start;
   padding: var(--p-5);
-  overflow-x: auto;
-  overflow-y: hidden;
+  flex-wrap: wrap; /* ✅ Allow wrapping */
+  gap: var(--p-3);
+  width: 100%; /* ✅ Prevent overflow */
+  justify-content: center; /* Center content nicely */
+  overflow-x: auto; /* Enable horizontal scroll for wider content */
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  flex-wrap: nowrap; /* ❗ Don't wrap to next line */
-  
-  /* Gradient mask effect (optional) */
-  -webkit-mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
-  mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+  margin-bottom: var(--p-4); /* Add some space below projects for navigation */
 }
 
 /* Scrollbar styling */
